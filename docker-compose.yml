@@ -22,9 +22,8 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
+    env_file:
+      - ./rabbitmq.env
     networks:
       - taskmanager-net
 

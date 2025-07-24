@@ -9,6 +9,6 @@ namespace TaskManagerDomain.Entities
         public string Description { get; set; } = string.Empty;
         public DateTime DueDate { get; set; }
         public Enum.TaskStatus Status { get; set; } = Enum.TaskStatus.Pending;
-        public Guid AssignedUserId { get; set; }
+        public User User { get; set; }
     }
 }

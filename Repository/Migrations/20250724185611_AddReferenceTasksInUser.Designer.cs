@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
@@ -11,9 +12,11 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(TaskManagerDbContext))]
-    partial class TaskManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250724185611_AddReferenceTasksInUser")]
+    partial class AddReferenceTasksInUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,6 +29,9 @@ namespace Repository.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AssignedUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
@@ -42,7 +48,7 @@ namespace Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -73,13 +79,9 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("TaskManagerDomain.Entities.TaskItem", b =>
                 {
-                    b.HasOne("TaskManagerDomain.Entities.User", "User")
+                    b.HasOne("TaskManagerDomain.Entities.User", null)
                         .WithMany("Tasks")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TaskManagerDomain.Entities.User", b =>
