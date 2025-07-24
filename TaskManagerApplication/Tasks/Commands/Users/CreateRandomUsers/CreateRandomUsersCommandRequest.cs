@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using TaskManagerDomain.Dtos;
 
-namespace TaskManagerApplication.Tasks.Commands.CreateRandomUsers
+namespace TaskManagerApplication.Tasks.Commands.Users.CreateRandomUsers
 {
     public class CreateRandomUsersCommandRequest : IRequest<CreateRandomUsersCommandResponse>
     {
-        public CreateRandomUsersDto Data { get; set; }
+        public int Amount { get; set; }
     }
 }

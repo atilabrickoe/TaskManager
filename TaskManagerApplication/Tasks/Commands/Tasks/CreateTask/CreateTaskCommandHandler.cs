@@ -3,7 +3,7 @@ using TaskManagerDomain.Entities;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
 
-namespace TaskManagerApplication.Tasks.Commands.CreateTask
+namespace TaskManagerApplication.Tasks.Commands.Tasks.CreateTask
 {
     public class CreateTaskCommandHandler : IRequestHandler<CreateTaskComandRequest, CreateTaskCommandResponse>
     {
@@ -20,14 +20,14 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
 
         public async Task<CreateTaskCommandResponse> Handle(CreateTaskComandRequest request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetByIdAsync(request.LoggedUserId);
+            var user = await _userRepository.GetByIdAsync(request.UserId);
 
             if(user == null)
                 return new CreateTaskCommandResponse
                 {
                     Success = false,
                     ErrorCode = ErrorCodes.USER_NOT_FOUND,
-                    Message = "Usuário não encontrado."
+                    Message = "User not found."
                 };
 
             var task = new TaskItem
@@ -40,11 +40,11 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
             };
 
             var created = await _taskRepository.CreateAsync(task);
-            await _notificationService.NotifyUserAsync(task.User.Id, $"Nova tarefa atribuída: {task.Title}");
+            await _notificationService.NotifyUserAsync(task.User.Id, $"New task assigned: {task.Title}");
 
             var response = new CreateTaskCommandResponse()
             {
-                Message = "Tarefa criada com sucesso.",
+                Message = "Task created successfully.",
                 Success = true,
             };
 

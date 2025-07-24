@@ -7,7 +7,7 @@ using Repository.DataManagers.Users;
 using Repository.Messaging;
 using System;
 using System.Text.Json.Serialization;
-using TaskManagerApplication.Tasks.Commands.CreateRandomUsers;
+using TaskManagerApplication.Tasks.Commands.Users.CreateRandomUsers;
 using TaskManagerDomain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +26,7 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<INotificationService, NotificationService>();
+
 
 #endregion
 

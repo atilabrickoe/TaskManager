@@ -19,11 +19,39 @@ namespace Repository.DataManagers.Users
 
         public async Task<IEnumerable<User>> GetAllAsync()
             => await _context.Users.ToListAsync();
+        public async Task<IEnumerable<User>> GetAllWithTaskAsync()
+        {
+            var usersWithTasks = await _context.Users
+                                 .Include(u => u.Tasks)
+                                 .ToListAsync();
+            return usersWithTasks;
+        }
+            
 
         public async Task<User?> GetByIdAsync(Guid id)
             => await _context.Users.FindAsync(id);
+        public async Task<User?> GetByIdWithTaskAsync(Guid id)
+        {
+            var userTask = await _context.Users
+                                          .Include(u => u.Tasks)
+                                          .Where(u => u.Id == id).FirstAsync();
+            return userTask;
+        }
 
         public async Task<User?> GetByUsernameAsync(string username)
             => await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        public async Task<bool> DeleteUserByIdAsync(Guid id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+                return false;
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
     }
 }

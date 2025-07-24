@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Tasks\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.6.3" />
     <PackageReference Include="MediatR" Version="13.0.0" />
   </ItemGroup>
 

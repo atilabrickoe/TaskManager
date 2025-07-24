@@ -20,7 +20,7 @@ namespace TaskManagerDomain.Entities
             {
                 throw new WrongRequiredInformation("UserName cannot be null or empty.");
             }
-            if(Guid.Empty == Id)
+            if (Guid.Empty == Id)
             {
                 throw new WrongRequiredInformation("Id cannot be empty.");
             }

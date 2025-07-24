@@ -9,11 +9,11 @@ namespace TaskManagerApplication
     public enum ErrorCodes
     {
         //General error codes 0 to 99
-        None = 0,
-        NotFound = 1,
-        InvalidInput = 2,
-        Unauthorized = 3,
-        InternalServerError = 4,
+        NONE = 0,
+        NOT_FOUND = 1,
+        INVALID_INPUT = 2,
+        UNAUTHORIZED = 3,
+        INTERNAL_SERVER_ERROR = 4,
         COULD_NOT_STORE_DATA = 5,
         INVALID_PERSON_ID = 6,
         MISSING_INFORMATION = 8,
