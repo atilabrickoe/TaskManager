@@ -1,0 +1,58 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
+  <diagram name="Página-1" id="_QRGJR-i5SI4cS4-80s3">
+    <mxGraphModel dx="2066" dy="849" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vlpKFRvM-aRibgiiu8us-19" value="&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="97" width="290" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="267" width="359" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-14" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="97" width="359" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-2" value="Arquitetura Task Manager" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="265" y="25" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-4" value="&lt;b&gt;.NET 8 Web API&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Backend)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="255" y="297" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-5" value="&lt;b&gt;Banco de Dados&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Armazenamento)&lt;/i&gt;" style="shape=cylinder;whiteSpace=wrap;html=1;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="255" y="467" width="120" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-6" value="&lt;b&gt;RabbitMQ&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Mensageria)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="490" y="297" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-7" value="&lt;b&gt;Testes Unitários e de Integração&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="490" y="127" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-10" value="1 - Escuta Fila e exibe&amp;nbsp;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;notificação&lt;div&gt;2 - Publica nova tarefa&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="127" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-11" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;1 - Autenticação&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;2 - Crud Task&lt;/div&gt;&lt;div style=&quot;&quot;&gt;3 - End-point Users&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="307" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-12" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Dotnet MAUI&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b style=&quot;&quot;&gt;&lt;i&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;(Frontend MVVM)&lt;/font&gt;&lt;/i&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;labelBorderColor=none;textShadow=0;strokeColor=none;fillColor=#99CCFF;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="245" y="117" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-16" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="444.5" width="359" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-17" value="Tabelas de Task e Users" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="499.5" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-18" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="267" width="290" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-20" value="1 - Testes Unitarios&lt;div&gt;2 - Testes Integração&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="617" y="137" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vlpKFRvM-aRibgiiu8us-21" value="Atualizações/notificações&amp;nbsp;&lt;div&gt;de usuário&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="617" y="322" width="160" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
