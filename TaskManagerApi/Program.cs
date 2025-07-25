@@ -7,7 +7,7 @@ using Repository.DataManagers.Users;
 using Repository.Messaging;
 using System;
 using System.Text.Json.Serialization;
-using TaskManagerApplication.Tasks.Commands.Users.CreateRandomUsers;
+using TaskManagerApplication.Users.Commands.CreateRandomUsers;
 using TaskManagerDomain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);

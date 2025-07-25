@@ -1,15 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TaskManagerApplication;
-using TaskManagerApplication.Tasks.Commands.Tasks.AssociateTaskToUser;
-using TaskManagerApplication.Tasks.Commands.Tasks.CreateTask;
-using TaskManagerApplication.Tasks.Commands.Tasks.DeleteTask;
-using TaskManagerApplication.Tasks.Commands.Tasks.UpdateTask;
-using TaskManagerApplication.Tasks.Commands.Users.CreateRandomUsers;
-using TaskManagerApplication.Tasks.Queries.Tasks;
-using TaskManagerApplication.Tasks.Queries.Users.GetAllUsers;
-using TaskManagerApplication.Tasks.Queries.Users.GetById;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using TaskManagerApplication.Tasks.Commands.AssociateTaskToUser;
+using TaskManagerApplication.Tasks.Commands.CreateTask;
+using TaskManagerApplication.Tasks.Commands.DeleteTask;
+using TaskManagerApplication.Tasks.Commands.UpdateTask;
+using TaskManagerApplication.Tasks.Queries.GetAllTasks;
 
 namespace TaskManagerApi.Controllers
 {

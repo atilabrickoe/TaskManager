@@ -1,10 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TaskManagerApplication;
-using TaskManagerApplication.Tasks.Commands.Users.CreateRandomUsers;
-using TaskManagerApplication.Tasks.Queries.Users.GetAllUsers;
-using TaskManagerApplication.Tasks.Queries.Users.GetById;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using TaskManagerApplication.Users.Commands.CreateRandomUsers;
+using TaskManagerApplication.Users.Queries.GetAllUsers;
+using TaskManagerApplication.Users.Queries.GetById;
 
 namespace TaskManagerApi.Controllers
 {

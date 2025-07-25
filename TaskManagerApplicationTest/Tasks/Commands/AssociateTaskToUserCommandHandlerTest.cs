@@ -2,7 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using TaskManagerApplication;
-using TaskManagerApplication.Tasks.Commands.Tasks.AssociateTaskToUser;
+using TaskManagerApplication.Tasks.Commands.AssociateTaskToUser;
 using TaskManagerDomain.Entities;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
