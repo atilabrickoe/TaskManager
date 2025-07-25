@@ -32,11 +32,14 @@ namespace Repository.DataManagers.Tasks
 
         public async Task<TaskItem?> GetByIdAsync(Guid id)
             => await _context.TaskItens.FindAsync(id);
+        public async Task<TaskItem?> GetByTitleAsync(string title)
+            => await _context.TaskItens.FirstOrDefaultAsync(t => t.Title == title);
 
-        public async Task UpdateAsync(TaskItem task)
+        public async Task<TaskItem> UpdateAsync(TaskItem task)
         {
             _context.TaskItens.Update(task);
             await _context.SaveChangesAsync();
+            return task;
         }
     }
 }

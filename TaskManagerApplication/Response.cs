@@ -20,9 +20,12 @@ namespace TaskManagerApplication
 
         //Tasks 100 to 199
         TASK_NOT_FOUND = 100,
+        TASK_TITLE_ALREADY_EXISTS = 101,
+        TASK_ALREADY_ASSOCIATED = 102,
 
         //Users 200 to 299
         USER_NOT_FOUND = 200,
+        INFO_USER_C
     }
     public abstract class Response
     {

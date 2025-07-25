@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManagerDomain.Dtos;
 
-namespace TaskManagerApplication.Tasks.Commands.Tasks.CreateTask
+namespace TaskManagerApplication.Tasks.Commands.Tasks.AssociateTaskToUser
 {
-    public class CreateTaskCommandResponse : Response
+    public class AssociateTaskToUserCommandResponse : Response
     {
         public TaskDto Task { get; set; }
     }

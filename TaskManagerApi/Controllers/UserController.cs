@@ -26,15 +26,10 @@ namespace TaskManagerApi.Controllers
             var res = await _mediatR.Send(request);
             if (res.Success)
                 return Created("", res.Users);
-            if (res.ErrorCode == ErrorCodes.MISSING_INFORMATION)
+            else
             {
                 _logger.LogError("Erro ao criar Usuarios data: {Message}", res.Message);
                 return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
-            }
-            else
-            {
-                _logger.LogError("An unexpected error occurred: {Message}", res.Message);
-                return StatusCode(500, "An unexpected error occurred.");
             }
         }
         [HttpGet("GetAllUsers/{withTask}")]
@@ -47,15 +42,10 @@ namespace TaskManagerApi.Controllers
             var res = await _mediatR.Send(request);
             if (res.Success)
                 return Ok(res.Users);
-            if (res.ErrorCode == ErrorCodes.INTERNAL_SERVER_ERROR)
+            else
             {
                 _logger.LogError(res.Message);
                 return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
-            }
-            else
-            {
-                _logger.LogError("An unexpected error occurred: {Message}", res.Message);
-                return StatusCode(500, "An unexpected error occurred.");
             }
         }
         [HttpGet("GetAllUsersById/{id}/{withTask}")]
@@ -69,15 +59,10 @@ namespace TaskManagerApi.Controllers
             var res = await _mediatR.Send(request);
             if (res.Success)
                 return Ok(res.User);
-            if (res.ErrorCode == ErrorCodes.USER_NOT_FOUND)
+            else
             {
                 _logger.LogError(res.Message);
                 return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
-            }
-            else
-            {
-                _logger.LogError("An unexpected error occurred: {Message}", res.Message);
-                return StatusCode(500, "An unexpected error occurred.");
             }
         }
     }
