@@ -10,6 +10,7 @@ namespace TaskManagerDomain.Dtos
         public string Description { get; set; }
         public Enum.TaskStatus Status { get; set; }
         public Guid IdUser { get; set; }
+        public string UserName { get; set; }
         public DateTime DueDate { get; set; }
 
         public static TaskDto MapToDto(TaskItem task)
@@ -21,6 +22,7 @@ namespace TaskManagerDomain.Dtos
                 Description = task.Description,
                 Status = task.Status,
                 IdUser = task.User?.Id ?? Guid.Empty,
+                UserName = task.User?.UserName ?? string.Empty,
                 DueDate = task.DueDate
             };
         }

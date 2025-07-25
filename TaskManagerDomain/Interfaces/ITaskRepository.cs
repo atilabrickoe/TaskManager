@@ -13,7 +13,9 @@ namespace TaskManagerDomain.Interfaces
         Task<TaskItem?> GetByIdAsync(Guid id);
         Task<TaskItem?> GetByTitleAsync(string title);
         Task<IEnumerable<TaskItem>> GetAllAsync();
+        Task<IEnumerable<TaskItem>> GetAllWithUserAsync();
         Task<TaskItem> UpdateAsync(TaskItem task);
         Task DeleteAsync(Guid id);
+        Task<TaskItem?> GetByIdWithUserAsync(Guid id);
     }
 }

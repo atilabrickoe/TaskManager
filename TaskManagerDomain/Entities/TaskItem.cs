@@ -1,4 +1,5 @@
-﻿using TaskManagerDomain.Exceptions;
+﻿using TaskManagerDomain.Dtos;
+using TaskManagerDomain.Exceptions;
 using Enum = TaskManagerDomain.Enums;
 
 namespace TaskManagerDomain.Entities
@@ -18,6 +19,27 @@ namespace TaskManagerDomain.Entities
             user.IsValid();
 
             this.User = user;
+        }
+
+        public void CanDelete()
+        {
+            if(User != null) 
+                throw new TaskWithAssociatedUserCannotBeDeleted("This task is associated with a user and cannot be deleted.");
+        }
+
+        public void IsValid()
+        {
+            if(this.User != null)
+                this.User.IsValid();
+
+            if (string.IsNullOrWhiteSpace(Title))
+            {
+                throw new WrongRequiredInformation("Title cannot be null or empty.");
+            }
+            if(DueDate < DateTime.Now)
+            {
+                throw new WrongRequiredInformation("Due date cannot be in the past.");
+            }
         }
 
         private void CanAssociate()

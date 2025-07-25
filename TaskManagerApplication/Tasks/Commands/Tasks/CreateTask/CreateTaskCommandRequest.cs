@@ -3,7 +3,7 @@ using TaskManagerDomain.Dtos;
 
 namespace TaskManagerApplication.Tasks.Commands.Tasks.CreateTask
 {
-    public class CreateTaskComandRequest : IRequest<CreateTaskCommandResponse>
+    public class CreateTaskCommandRequest : IRequest<CreateTaskCommandResponse>
     {
         public CreateTaskDto Data { get; set; }
     }

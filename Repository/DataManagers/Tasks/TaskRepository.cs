@@ -29,9 +29,18 @@ namespace Repository.DataManagers.Tasks
 
         public async Task<IEnumerable<TaskItem>> GetAllAsync()
             => await _context.TaskItens.ToListAsync();
+        public async Task<IEnumerable<TaskItem>> GetAllWithUserAsync()
+        {
+            var taskWithUser = await _context.TaskItens
+                                                       .Include(t => t.User)
+                                                       .ToListAsync();
+            return taskWithUser;
+        }
 
         public async Task<TaskItem?> GetByIdAsync(Guid id)
             => await _context.TaskItens.FindAsync(id);
+        public async Task<TaskItem?> GetByIdWithUserAsync(Guid id)
+            => await _context.TaskItens.Include(t => t.User).FirstOrDefaultAsync(t => t.Id == id);
         public async Task<TaskItem?> GetByTitleAsync(string title)
             => await _context.TaskItens.FirstOrDefaultAsync(t => t.Title == title);
 
