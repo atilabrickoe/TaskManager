@@ -40,6 +40,12 @@ namespace Repository.DataManagers.Users
 
         public async Task<User?> GetByUsernameAsync(string username)
             => await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        
+        public async Task<User?> LoginAsync(string username, string passWord)
+        {
+            var userLogin = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username && u.PasswordHash == passWord);
+            return userLogin;
+        }
         public async Task<bool> DeleteUserByIdAsync(Guid id)
         {
             var user = await _context.Users.FindAsync(id);

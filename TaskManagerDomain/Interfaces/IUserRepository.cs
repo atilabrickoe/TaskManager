@@ -11,5 +11,6 @@ namespace TaskManagerDomain.Interfaces
         Task<IEnumerable<User>> GetAllWithTaskAsync();
         Task<User?> GetByUsernameAsync(string username);
         Task<bool> DeleteUserByIdAsync(Guid id);
+        Task<User?> LoginAsync(string username, string passWord);
     }
 }

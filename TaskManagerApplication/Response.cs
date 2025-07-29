@@ -26,7 +26,8 @@ namespace TaskManagerApplication
 
         //Users 200 to 299
         USER_NOT_FOUND = 200,
-        INFO_USER_C
+        USER_ALREADY_EXISTS = 201,
+        LOGIN_WITH_WRONG_PASSWORD = 202
     }
     public abstract class Response
     {

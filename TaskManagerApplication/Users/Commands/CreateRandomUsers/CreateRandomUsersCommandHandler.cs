@@ -3,6 +3,7 @@ using TaskManagerDomain.Entities;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
 using Bogus;
+using TaskManagerDomain.Dtos;
 
 namespace TaskManagerApplication.Users.Commands.CreateRandomUsers
 {
@@ -27,7 +28,7 @@ namespace TaskManagerApplication.Users.Commands.CreateRandomUsers
 
                 var response = new CreateRandomUsersCommandResponse()
                 {
-                    Users = new List<User>()
+                    Users = new List<UserDto>()
                 };
 
                 for (int i = 0; i < request.Amount; i++)
@@ -36,7 +37,9 @@ namespace TaskManagerApplication.Users.Commands.CreateRandomUsers
 
                     fakeUser.IsValid();
 
-                    response.Users.Add(await _userRepository.CreateAsync(fakeUser));
+                    var user = await _userRepository.CreateAsync(fakeUser);
+
+                    response.Users.Add(UserDto.MapToDto(user));
                 }
 
                 response.Success = true;

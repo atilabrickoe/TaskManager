@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagerApplication.Users.Commands.CreateRandomUsers;
+using TaskManagerApplication.Users.Commands.CreateUser;
+using TaskManagerApplication.Users.Commands.Login;
 using TaskManagerApplication.Users.Queries.GetAllUsers;
 using TaskManagerApplication.Users.Queries.GetById;
 
@@ -17,6 +19,30 @@ namespace TaskManagerApi.Controllers
         {
             _mediatR = mediatR;
             _logger = logger;
+        }
+        [HttpPost("CreateUser")]
+        public async Task<ActionResult<CreateUserCommandResponse>> CreateUser(CreateUserCommandRequest request)
+        {
+            var res = await _mediatR.Send(request);
+            if (res.Success)
+                return Created("", res.User);
+            else
+            {
+                _logger.LogError("Erro ao criar Usuarios data: {Message}", res.Message);
+                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+            }
+        }
+        [HttpPost("Login")]
+        public async Task<ActionResult<LoginCommandResponse>> CreateRandomUsers(LoginCommandRequest request)
+        {
+            var res = await _mediatR.Send(request);
+            if (res.Success)
+                return Ok(res);
+            else
+            {
+                _logger.LogError("Erro ao criar Usuarios data: {Message}", res.Message);
+                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+            }
         }
         [HttpPost("CreateRandom")]
         public async Task<ActionResult<CreateRandomUsersCommandResponse>> CreateRandomUsers(CreateRandomUsersCommandRequest request)

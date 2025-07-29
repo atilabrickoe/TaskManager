@@ -1,9 +1,10 @@
-﻿using TaskManagerDomain.Entities;
+﻿using TaskManagerDomain.Dtos;
+using TaskManagerDomain.Entities;
 
 namespace TaskManagerApplication.Users.Commands.CreateRandomUsers
 {
     public class CreateRandomUsersCommandResponse : Response
     {
-        public List<User> Users { get; set; }
+        public List<UserDto> Users { get; set; }
     }
 }
