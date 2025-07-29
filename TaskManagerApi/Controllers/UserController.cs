@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagerApplication.Users.Commands.CreateRandomUsers;
 using TaskManagerApplication.Users.Commands.CreateUser;
@@ -10,6 +11,7 @@ namespace TaskManagerApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IMediator _mediatR;
@@ -20,6 +22,7 @@ namespace TaskManagerApi.Controllers
             _mediatR = mediatR;
             _logger = logger;
         }
+        [AllowAnonymous]
         [HttpPost("CreateUser")]
         public async Task<ActionResult<CreateUserCommandResponse>> CreateUser(CreateUserCommandRequest request)
         {
@@ -32,6 +35,7 @@ namespace TaskManagerApi.Controllers
                 return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
             }
         }
+        [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<ActionResult<LoginCommandResponse>> CreateRandomUsers(LoginCommandRequest request)
         {
