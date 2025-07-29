@@ -54,7 +54,12 @@ namespace TaskManagerDomainTest
             var task = new TaskItem
             {
                 Title = "",
-                DueDate = DateTime.Now.AddDays(1)
+                DueDate = DateTime.Now.AddDays(1),
+                User = new User
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = "testUser"
+                }
             };
 
             Action act = () => task.IsValid();
@@ -70,7 +75,12 @@ namespace TaskManagerDomainTest
             var task = new TaskItem
             {
                 Title = "test",
-                DueDate = DateTime.Now.AddDays(-1)
+                DueDate = DateTime.Now.AddDays(-1),
+                User = new User
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = "testUser"
+                }
             };
 
             Action act = () => task.IsValid();
@@ -86,7 +96,12 @@ namespace TaskManagerDomainTest
             var task = new TaskItem
             {
                 Title = "test",
-                DueDate = DateTime.Now.AddDays(5)
+                DueDate = DateTime.Now.AddDays(5),
+                User = new User
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = "testUser"
+                }
             };
 
             Action act = () => task.IsValid();

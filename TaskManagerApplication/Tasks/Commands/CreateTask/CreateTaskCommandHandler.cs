@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 using TaskManagerDomain.Dtos;
 using TaskManagerDomain.Entities;
 using TaskManagerDomain.Exceptions;
@@ -9,10 +11,14 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
     public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommandRequest, CreateTaskCommandResponse>
     {
         private readonly ITaskRepository _taskRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUserRepository _userRepository;
 
-        public CreateTaskCommandHandler(ITaskRepository taskRepository)
+        public CreateTaskCommandHandler(ITaskRepository taskRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
         {
             _taskRepository = taskRepository;
+            _httpContextAccessor = httpContextAccessor;
+            _userRepository = userRepository;
         }
 
         public async Task<CreateTaskCommandResponse> Handle(CreateTaskCommandRequest request, CancellationToken cancellationToken)
@@ -38,12 +44,25 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                         ErrorCode = ErrorCodes.TASK_TITLE_ALREADY_EXISTS
                     };
                 }
+
+                var userName = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.Name)?.Value;
+                var user = await _userRepository.GetByUsernameAsync(userName);
+                if(user == null)
+                {
+                    return new CreateTaskCommandResponse
+                    {
+                        Message = "User not found.",
+                        Success = false,
+                        ErrorCode = ErrorCodes.USER_NOT_FOUND
+                    };
+                }
                 var task = new TaskItem
                 {
                     Id = Guid.NewGuid(),
                     Title = request.Data.Title,
                     Description = request.Data.Description,
-                    DueDate = request.Data.DueDate
+                    DueDate = request.Data.DueDate,
+                    User = user
                 };
 
                 var created = await _taskRepository.CreateAsync(task);

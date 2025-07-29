@@ -29,7 +29,11 @@ namespace TaskManagerDomain.Entities
 
         public void IsValid()
         {
-            if(this.User != null)
+            if (this.User == null)
+            {
+                throw new UserIsRequiredForTaskException("User is required for task."); 
+            }
+            if (this.User != null)
                 this.User.IsValid();
 
             if (string.IsNullOrWhiteSpace(Title))

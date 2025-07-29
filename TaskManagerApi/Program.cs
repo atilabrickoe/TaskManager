@@ -80,6 +80,9 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(CreateRandomUsersCommandHandler).Assembly);
 });
 
+//adding logged in user to context
+builder.Services.AddHttpContextAccessor();
+
 #region Ioc
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
