@@ -32,7 +32,7 @@ namespace TaskManagerApplicationTest.Tasks.Commands
         [Test]
         public async Task ShouldAssociateTaskSuccessfully()
         {
-            var request = new AssociateTaskToUserComandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
+            var request = new AssociateTaskToUserCommandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
             var user = new User { Id = request.UserId, UserName = "TestUser" };
             var task = new TaskItem { Id = request.TaskId, Title = "Test Task" };
 
@@ -43,7 +43,7 @@ namespace TaskManagerApplicationTest.Tasks.Commands
 
             //assert
             result.Success.Should().BeTrue();
-            result.Task.Title.Should().Be("Test Task");
+            result.Data.Title.Should().Be("Test Task");
             _taskRepositoryMock.Verify(r => r.UpdateAsync(task), Times.Once);
             _notificationServiceMock.Verify(n => n.NotifyUserAsync(user.Id, It.IsAny<string>()), Times.Once);
         }
@@ -51,7 +51,7 @@ namespace TaskManagerApplicationTest.Tasks.Commands
         [Test]
         public async Task Handle_ShouldReturnUserNotFound_WhenUserDoesNotExist()
         {
-            var request = new AssociateTaskToUserComandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
+            var request = new AssociateTaskToUserCommandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
             _userRepositoryMock.Setup(r => r.GetByIdAsync(request.UserId)).ReturnsAsync((User)null);
 
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -64,7 +64,7 @@ namespace TaskManagerApplicationTest.Tasks.Commands
         [Test]
         public async Task ShouldReturnTaskNotFound_WhenTaskDoesNotExist()
         {
-            var request = new AssociateTaskToUserComandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
+            var request = new AssociateTaskToUserCommandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
             var user = new User { Id = request.UserId, UserName = "TestUser" };
             _userRepositoryMock.Setup(r => r.GetByIdAsync(request.UserId)).ReturnsAsync(user);
             _taskRepositoryMock.Setup(r => r.GetByIdAsync(request.TaskId)).ReturnsAsync((TaskItem)null);
@@ -79,7 +79,7 @@ namespace TaskManagerApplicationTest.Tasks.Commands
         [Test]
         public async Task ShouldReturnError_WhenWrongRequiredInformationExceptionThrown()
         {
-            var request = new AssociateTaskToUserComandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
+            var request = new AssociateTaskToUserCommandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
             var user = new User { Id = request.UserId, UserName = "TestUser" };
             var task = new TaskItem { Id = request.TaskId, Title = "Test Task" };
 
@@ -98,7 +98,7 @@ namespace TaskManagerApplicationTest.Tasks.Commands
         [Test]
         public async Task ShouldReturnError_WhenUnexpectedExceptionThrown()
         {
-            var request = new AssociateTaskToUserComandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
+            var request = new AssociateTaskToUserCommandRequest { UserId = Guid.NewGuid(), TaskId = Guid.NewGuid() };
             var user = new User { Id = request.UserId, UserName = "TestUser" };
             var task = new TaskItem { Id = request.TaskId, Title = "Test Task" };
 

@@ -21,7 +21,7 @@ namespace TaskManagerApplication.Users.Queries.GetAllUsers
                                                await _userRepository.GetAllAsync();
                 var response = new GetAllUsersQueryResponse
                 {
-                    Users = users.Select(u => UserDto.MapToDto(u)).ToList(),
+                    Data = users.Select(u => UserDto.MapToDto(u)).ToList(),
                     Success = true,
                 };
                 return response;

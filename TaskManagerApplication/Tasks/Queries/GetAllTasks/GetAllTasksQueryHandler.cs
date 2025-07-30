@@ -21,7 +21,7 @@ namespace TaskManagerApplication.Tasks.Queries.GetAllTasks
                                                await _taskRepository.GetAllAsync();
                 var response = new GetAllTasksQueryResponse
                 {
-                    Task = tasks.Select(t => TaskDto.MapToDto(t)).ToList(),
+                    Data = tasks.Select(t => TaskDto.MapToDto(t)).ToList(),
                     Success = true,
                 };
                 return response;

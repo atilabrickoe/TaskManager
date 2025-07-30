@@ -44,7 +44,7 @@ namespace TaskManagerApplication.Users.Commands.CreateUser
                 await _userRepository.CreateAsync(user);
 
                 var response = new CreateUserCommandResponse();
-                response.User = UserDto.MapToDto(user);
+                response.Data = UserDto.MapToDto(user);
                 response.Success = true;
 
                 return response;

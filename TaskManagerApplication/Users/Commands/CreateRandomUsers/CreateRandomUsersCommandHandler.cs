@@ -28,7 +28,7 @@ namespace TaskManagerApplication.Users.Commands.CreateRandomUsers
 
                 var response = new CreateRandomUsersCommandResponse()
                 {
-                    Users = new List<UserDto>()
+                    Data = new List<UserDto>()
                 };
 
                 for (int i = 0; i < request.Amount; i++)
@@ -39,7 +39,7 @@ namespace TaskManagerApplication.Users.Commands.CreateRandomUsers
 
                     var user = await _userRepository.CreateAsync(fakeUser);
 
-                    response.Users.Add(UserDto.MapToDto(user));
+                    response.Data.Add(UserDto.MapToDto(user));
                 }
 
                 response.Success = true;

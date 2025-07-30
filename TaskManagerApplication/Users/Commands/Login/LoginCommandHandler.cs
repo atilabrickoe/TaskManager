@@ -79,7 +79,7 @@ namespace TaskManagerApplication.Users.Commands.Login
                 return new LoginCommandResponse()
                 {
                     Success = true,
-                    Token = new TokenJwt()
+                    Data = new TokenJwt()
                     {
                         Accesstoken = jwt,
                         Expiration = token.ValidTo,

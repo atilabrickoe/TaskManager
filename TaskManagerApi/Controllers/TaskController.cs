@@ -27,23 +27,23 @@ namespace TaskManagerApi.Controllers
         {
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Created("", res.Task);
+                return Created("", res);
             else
             {
                 _logger.LogError("An unexpected error occurred: {Message}", res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [HttpPost("AssociateTaskToUser")]
-        public async Task<ActionResult<AssociateTaskToUserCommandResponse>> AssociateTaskToUser(AssociateTaskToUserComandRequest request)
+        public async Task<ActionResult<AssociateTaskToUserCommandResponse>> AssociateTaskToUser(AssociateTaskToUserCommandRequest request)
         {
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Created("", res.Task);
+                return Created("", res);
             else
             {
                 _logger.LogError("An unexpected error occurred: {Message}", res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [HttpGet("GetAllTasks/{withUser}")]
@@ -55,11 +55,11 @@ namespace TaskManagerApi.Controllers
             };
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Ok(res.Task);
+                return Ok(res);
             else
             {
                 _logger.LogError(res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [HttpPost("UpdateTask")]
@@ -67,11 +67,11 @@ namespace TaskManagerApi.Controllers
         {
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Ok(res.Task);
+                return Ok(res);
             else
             {
                 _logger.LogError("An unexpected error occurred: {Message}", res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [HttpDelete("DeleteTask/{taskId}")]
@@ -87,7 +87,7 @@ namespace TaskManagerApi.Controllers
             else
             {
                 _logger.LogError("An unexpected error occurred: {Message}", res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
     }

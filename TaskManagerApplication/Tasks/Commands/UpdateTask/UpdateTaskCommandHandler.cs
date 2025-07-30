@@ -58,7 +58,7 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
                 {
                     Message = "Task updated successfully.",
                     Success = true,
-                    Task = TaskDto.MapToDto(updatedTask)
+                    Data = TaskDto.MapToDto(updatedTask)
                 };
 
                 return response;

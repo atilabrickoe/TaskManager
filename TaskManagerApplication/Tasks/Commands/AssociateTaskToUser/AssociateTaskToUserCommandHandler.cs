@@ -5,7 +5,7 @@ using TaskManagerDomain.Interfaces;
 
 namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
 {
-    public class AssociateTaskToUserCommandHandler : IRequestHandler<AssociateTaskToUserComandRequest, AssociateTaskToUserCommandResponse>
+    public class AssociateTaskToUserCommandHandler : IRequestHandler<AssociateTaskToUserCommandRequest, AssociateTaskToUserCommandResponse>
     {
         private readonly ITaskRepository _taskRepository;
         private readonly IUserRepository _userRepository;
@@ -18,7 +18,7 @@ namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
             _userRepository = userRepository;
         }
 
-        public async Task<AssociateTaskToUserCommandResponse> Handle(AssociateTaskToUserComandRequest request, CancellationToken cancellationToken)
+        public async Task<AssociateTaskToUserCommandResponse> Handle(AssociateTaskToUserCommandRequest request, CancellationToken cancellationToken)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
 
                 var response = new AssociateTaskToUserCommandResponse()
                 {
-                    Task = TaskDto.MapToDto(task),
+                    Data = TaskDto.MapToDto(task),
                     Message = "Task associated successfully.",
                     Success = true,
                 };

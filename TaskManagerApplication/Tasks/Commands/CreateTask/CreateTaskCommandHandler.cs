@@ -71,7 +71,7 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                 {
                     Message = "Task created successfully.",
                     Success = true,
-                    Task = TaskDto.MapToDto(created)
+                    Data = TaskDto.MapToDto(created)
                 };
 
                 return response;

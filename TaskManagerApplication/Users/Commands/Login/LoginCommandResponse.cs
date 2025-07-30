@@ -9,6 +9,6 @@ namespace TaskManagerApplication.Users.Commands.Login
 {
     public class LoginCommandResponse : Response
     {
-        public TokenJwt Token { get; set; }
+        public TokenJwt Data { get; set; }
     }
 }

@@ -28,16 +28,16 @@ namespace TaskManagerApi.Controllers
         {
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Created("", res.User);
+                return Created("", res);
             else
             {
                 _logger.LogError("Erro ao criar Usuarios data: {Message}", res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [AllowAnonymous]
         [HttpPost("Login")]
-        public async Task<ActionResult<LoginCommandResponse>> CreateRandomUsers(LoginCommandRequest request)
+        public async Task<ActionResult<LoginCommandResponse>> Login(LoginCommandRequest request)
         {
             var res = await _mediatR.Send(request);
             if (res.Success)
@@ -45,7 +45,7 @@ namespace TaskManagerApi.Controllers
             else
             {
                 _logger.LogError("Erro ao criar Usuarios data: {Message}", res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [HttpPost("CreateRandom")]
@@ -53,15 +53,15 @@ namespace TaskManagerApi.Controllers
         {
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Created("", res.Users);
+                return Created("", res);
             else
             {
                 _logger.LogError("Erro ao criar Usuarios data: {Message}", res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [HttpGet("GetAllUsers/{withTask}")]
-        public async Task<ActionResult<GetAllUsersQueryResponse>> ObterUsuarios(bool withTask = false)
+        public async Task<ActionResult<GetAllUsersQueryResponse>> GetAllUsers(bool withTask = false)
         {
             var request = new GetAllUsersQueryRequest()
             {
@@ -69,11 +69,11 @@ namespace TaskManagerApi.Controllers
             };
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Ok(res.Users);
+                return Ok(res);
             else
             {
                 _logger.LogError(res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
         [HttpGet("GetAllUsersById/{id}/{withTask}")]
@@ -86,11 +86,11 @@ namespace TaskManagerApi.Controllers
             };
             var res = await _mediatR.Send(request);
             if (res.Success)
-                return Ok(res.User);
+                return Ok(res);
             else
             {
                 _logger.LogError(res.Message);
-                return StatusCode(res.ErrorCode.GetHashCode(), res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
             }
         }
     }

@@ -4,6 +4,6 @@ namespace TaskManagerApplication.Users.Commands.CreateUser
 {
     public class CreateUserCommandResponse : Response
     {
-        public UserDto User { get; set; }
+        public UserDto Data { get; set; }
     }
 }

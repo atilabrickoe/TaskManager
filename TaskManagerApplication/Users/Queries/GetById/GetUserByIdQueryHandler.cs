@@ -28,7 +28,7 @@ namespace TaskManagerApplication.Users.Queries.GetById
                 var response = new GetUserByIdQueryResponse
                 {
                     Success = true,
-                    User = UserDto.MapToDto(user),
+                    Data = UserDto.MapToDto(user),
                 };
 
                 return response;

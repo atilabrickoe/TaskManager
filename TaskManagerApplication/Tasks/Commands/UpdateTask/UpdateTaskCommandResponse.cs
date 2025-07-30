@@ -4,6 +4,6 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
 {
     public class UpdateTaskCommandResponse : Response
     {
-        public TaskDto Task { get; set; }
+        public TaskDto Data { get; set; }
     }
 }
