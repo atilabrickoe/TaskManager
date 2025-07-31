@@ -109,12 +109,47 @@ builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 
 var app = builder.Build();
 
-// Run EF Core migrations automatically at startup
+#region Run EF Core migrations automatically at startup
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<TaskManagerDbContext>();
-    db.Database.Migrate();
+    //try once per minute, maximum number of attempts 10
+    var maxAttempts = 10;
+    var delay = TimeSpan.FromSeconds(60);
+    var connected = false;
+
+    for (int attempt = 1; attempt <= maxAttempts && !connected; attempt++)
+    {
+        try
+        {
+            Console.WriteLine($"Attempt {attempt}/{maxAttempts} to connect to SQL Server...");
+
+            using (var innerScope = app.Services.CreateScope())
+            {
+                var db = innerScope.ServiceProvider.GetRequiredService<TaskManagerDbContext>();
+
+                db.Database.Migrate();
+                // Check if the database is ready
+                if (db.Database.CanConnect())
+                {
+                    Console.WriteLine("SQL Server is ready!");
+                    connected = true;
+                }
+                else
+                {
+                    throw new Exception("Database not ready");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to connect: {ex.Message}");
+            if (attempt == maxAttempts) throw;// give up after last attempt
+            Thread.Sleep(delay);
+        }
+    }
 }
+
+#endregion
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -6,8 +6,6 @@ services:
       - ./sql.env
     ports:
       - "1433:1433"
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - taskmanager-net
 
@@ -28,7 +26,7 @@ services:
       dockerfile: TaskManagerApi/Dockerfile
     container_name: taskmanager-api
     ports:
-      - "5000:80"
+      - "7015:7015"
     depends_on:
       - sqlserver
       - rabbitmq

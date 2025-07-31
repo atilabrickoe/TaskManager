@@ -12,8 +12,8 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(TaskManagerDbContext))]
-    [Migration("20250729152714_UpdateUserPasswordHash")]
-    partial class UpdateUserPasswordHash
+    [Migration("20250731191517_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
