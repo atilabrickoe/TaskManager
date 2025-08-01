@@ -6,6 +6,7 @@ using TaskManagerApplication.Tasks.Commands.CreateTask;
 using TaskManagerApplication.Tasks.Commands.DeleteTask;
 using TaskManagerApplication.Tasks.Commands.UpdateTask;
 using TaskManagerApplication.Tasks.Queries.GetAllTasks;
+using TaskManagerApplication.Tasks.Queries.GetTaskById;
 
 namespace TaskManagerApi.Controllers
 {
@@ -51,6 +52,23 @@ namespace TaskManagerApi.Controllers
         {
             var request = new GetAllTasksQueryRequest()
             {
+                WithUser = withUser
+            };
+            var res = await _mediatR.Send(request);
+            if (res.Success)
+                return Ok(res);
+            else
+            {
+                _logger.LogError(res.Message);
+                return StatusCode(res.ErrorCodeHttp, res);
+            }
+        }
+        [HttpGet("GetTaskById/{id}/{withUser}")]
+        public async Task<ActionResult<GetAllTasksQueryResponse>> GetTaskById(Guid id,bool withUser = false)
+        {
+            var request = new GetTaskByIdQueryRequest()
+            {
+                Id = id,
                 WithUser = withUser
             };
             var res = await _mediatR.Send(request);

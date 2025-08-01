@@ -76,8 +76,8 @@ namespace TaskManagerApi.Controllers
                 return StatusCode(res.ErrorCodeHttp, res);
             }
         }
-        [HttpGet("GetAllUsersById/{id}/{withTask}")]
-        public async Task<ActionResult<GetAllUsersQueryResponse>> GetAllUsersById(Guid id, bool withTask = false)
+        [HttpGet("GetUserById/{id}/{withTask}")]
+        public async Task<ActionResult<GetAllUsersQueryResponse>> GetUserById(Guid id, bool withTask = false)
         {
             var request = new GetUserByIdQueryRequest()
             {
@@ -93,5 +93,6 @@ namespace TaskManagerApi.Controllers
                 return StatusCode(res.ErrorCodeHttp, res);
             }
         }
+        
     }
 }

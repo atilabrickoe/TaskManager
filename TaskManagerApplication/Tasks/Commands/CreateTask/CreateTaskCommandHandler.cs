@@ -34,16 +34,6 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                         ErrorCode = ErrorCodes.MISSING_INFORMATION
                     };
                 }
-                var existingTask = await _taskRepository.GetByTitleAsync(request.Data.Title);
-                if (existingTask != null)
-                {
-                    return new CreateTaskCommandResponse
-                    {
-                        Message = "A task with this title already exists.",
-                        Success = false,
-                        ErrorCode = ErrorCodes.TASK_TITLE_ALREADY_EXISTS
-                    };
-                }
 
                 var userName = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.Name)?.Value;
                 var user = await _userRepository.GetByUsernameAsync(userName);
@@ -56,12 +46,22 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                         ErrorCode = ErrorCodes.USER_NOT_FOUND
                     };
                 }
+                var existingTask = await _taskRepository.TaskExistsToUser(request.Data.Title, user.Id);
+                if (existingTask)
+                {
+                    return new CreateTaskCommandResponse
+                    {
+                        Message = "A task with this title already exists.",
+                        Success = false,
+                        ErrorCode = ErrorCodes.TASK_TITLE_ALREADY_EXISTS
+                    };
+                }
                 var task = new TaskItem
                 {
-                    Id = Guid.NewGuid(),
                     Title = request.Data.Title,
                     Description = request.Data.Description,
                     DueDate = request.Data.DueDate,
+                    Status = request.Data.Status,
                     User = user
                 };
 

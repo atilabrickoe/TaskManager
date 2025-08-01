@@ -20,7 +20,7 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
         {
             try
             {
-                if (request.Task.Id == Guid.Empty)
+                if (request.Data.Id == Guid.Empty)
                 {
                     return new UpdateTaskCommandResponse
                     {
@@ -29,7 +29,7 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
                         ErrorCode = ErrorCodes.MISSING_INFORMATION
                     };
                 }
-                var existingTask = await _taskRepository.GetByIdAsync(request.Task.Id);
+                var existingTask = await _taskRepository.GetByIdAsync(request.Data.Id);
                 if (existingTask == null)
                 {
                     return new UpdateTaskCommandResponse
@@ -40,14 +40,14 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
                     };
                 }
 
-                existingTask.DueDate = request.Task.DueDate;
-                existingTask.Status = request.Task.Status;
-                existingTask.Title = request.Task.Title;
-                existingTask.Description = request.Task.Description;
+                existingTask.DueDate = request.Data.DueDate;
+                existingTask.Status = request.Data.Status;
+                existingTask.Title = request.Data.Title;
+                existingTask.Description = request.Data.Description;
 
-                if (request.Task.IdUser != null && request.Task.IdUser != Guid.Empty && request.Task.IdUser != existingTask.User?.Id)
+                if (request.Data.IdUser != null && request.Data.IdUser != Guid.Empty && request.Data.IdUser != existingTask.User?.Id)
                 {
-                    existingTask.User = await _userRepository.GetByIdAsync(request.Task.IdUser);
+                    existingTask.User = await _userRepository.GetByIdAsync(request.Data.IdUser);
                 }
 
                 existingTask.IsValid();

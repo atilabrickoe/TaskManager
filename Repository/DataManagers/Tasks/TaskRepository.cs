@@ -41,6 +41,11 @@ namespace Repository.DataManagers.Tasks
             => await _context.TaskItens.FindAsync(id);
         public async Task<TaskItem?> GetByIdWithUserAsync(Guid id)
             => await _context.TaskItens.Include(t => t.User).FirstOrDefaultAsync(t => t.Id == id);
+        public async Task<bool> TaskExistsToUser(string title, Guid id)
+        {
+            return await _context.TaskItens.AnyAsync(t => t.Title == title && t.User.Id == id);
+        }
+
         public async Task<TaskItem?> GetByTitleAsync(string title)
             => await _context.TaskItens.FirstOrDefaultAsync(t => t.Title == title);
 

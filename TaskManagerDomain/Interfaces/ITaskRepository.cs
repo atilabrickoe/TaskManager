@@ -17,5 +17,6 @@ namespace TaskManagerDomain.Interfaces
         Task<TaskItem> UpdateAsync(TaskItem task);
         Task DeleteAsync(Guid id);
         Task<TaskItem?> GetByIdWithUserAsync(Guid id);
+        Task<bool> TaskExistsToUser(string title, Guid id);
     }
 }

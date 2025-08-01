@@ -18,11 +18,12 @@ namespace Repository.DataManagers.Users
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
-            => await _context.Users.ToListAsync();
+            => await _context.Users.OrderBy(u => u.UserName).ToListAsync();
         public async Task<IEnumerable<User>> GetAllWithTaskAsync()
         {
             var usersWithTasks = await _context.Users
-                                 .Include(u => u.Tasks)
+                                 .OrderBy(u => u.UserName)
+                                 .Include(u => u.Tasks.OrderByDescending(t => t.DueDate))
                                  .ToListAsync();
             return usersWithTasks;
         }
