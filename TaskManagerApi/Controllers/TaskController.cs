@@ -75,7 +75,7 @@ namespace TaskManagerApi.Controllers
             }
         }
         [HttpDelete("DeleteTask/{taskId}")]
-        public async Task<ActionResult<DeleteTaskCommandResponse>> UpdateTask(Guid taskId)
+        public async Task<ActionResult<DeleteTaskCommandResponse>> DeleteTask(Guid taskId)
         {
             var request = new DeleteTaskCommandRequest()
             {

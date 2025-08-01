@@ -21,12 +21,6 @@ namespace TaskManagerDomain.Entities
             this.User = user;
         }
 
-        public void CanDelete()
-        {
-            if(User != null) 
-                throw new TaskWithAssociatedUserCannotBeDeleted("This task is associated with a user and cannot be deleted.");
-        }
-
         public void IsValid()
         {
             if (this.User == null)

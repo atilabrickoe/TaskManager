@@ -9,46 +9,6 @@ namespace TaskManagerDomainTest
     public class TaskItemTest
     {
         [Test]
-        public void TaskWithAssociatedUserCannotBeDeleted()
-        {
-            var taskWithUser = new TaskItem()
-            {
-                Id = Guid.NewGuid(),
-                Title = "Test Task",
-                Description = "This is a test task",
-                DueDate = DateTime.Now.AddDays(5),
-                User = new User()
-                {
-                    Id = Guid.NewGuid(),
-                    UserName = "TestUser"
-                }
-            };
-
-            Action act = () => taskWithUser.CanDelete();
-
-            // Assert
-            act.Should()
-               .Throw<TaskWithAssociatedUserCannotBeDeleted>()
-               .WithMessage("This task is associated with a user and cannot be deleted.");
-        }
-
-        [Test]
-        public void CanDelete_ShouldNotThrow_WhenUserIsNull()
-        {
-            var task = new TaskItem
-            {
-                Id = Guid.NewGuid(),
-                Title = "test Task",
-                User = null
-            };
-
-            Action act = () => task.CanDelete();
-
-            // Assert
-            act.Should().NotThrow();
-        }
-
-        [Test]
         public void ShouldThrow_WhenTitleIsNullOrEmpty()
         {
             var task = new TaskItem

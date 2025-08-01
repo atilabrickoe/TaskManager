@@ -28,8 +28,6 @@ namespace TaskManagerApplication.Tasks.Commands.DeleteTask
                     };
                 }
 
-                existingTask.CanDelete();
-
                 await _taskRepository.DeleteAsync(existingTask.Id);
 
                 var response = new DeleteTaskCommandResponse()
@@ -39,15 +37,6 @@ namespace TaskManagerApplication.Tasks.Commands.DeleteTask
                 };
 
                 return response;
-            }
-            catch (TaskWithAssociatedUserCannotBeDeleted ex)
-            {
-                return new DeleteTaskCommandResponse
-                {
-                    Message = ex.Message,
-                    Success = false,
-                    ErrorCode = ErrorCodes.TASK_ASSOCIATED_CAN_NOT_BE_DELETED
-                };
             }
             catch (Exception ex)
             {

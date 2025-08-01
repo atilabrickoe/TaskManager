@@ -23,7 +23,6 @@ namespace TaskManagerApplication
         TASK_NOT_FOUND = 21,
         TASK_TITLE_ALREADY_EXISTS = 22,
         TASK_ALREADY_ASSOCIATED = 23,
-        TASK_ASSOCIATED_CAN_NOT_BE_DELETED = 24,
 
         //Users 41 to 60
         USER_NOT_FOUND = 41,
