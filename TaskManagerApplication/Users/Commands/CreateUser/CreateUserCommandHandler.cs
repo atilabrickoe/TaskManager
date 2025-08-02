@@ -29,7 +29,7 @@ namespace TaskManagerApplication.Users.Commands.CreateUser
                     {
                         Success = false,
                         ErrorCode = ErrorCodes.USER_ALREADY_EXISTS,
-                        Message = $"User with Name {request.UserName} already exists."
+                        Message = $"Usuário com nome {request.UserName} já existe."
                     };
                 }
 

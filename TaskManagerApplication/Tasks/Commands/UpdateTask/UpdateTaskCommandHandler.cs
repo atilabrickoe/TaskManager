@@ -24,7 +24,7 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
                 {
                     return new UpdateTaskCommandResponse
                     {
-                        Message = "Id is required.",
+                        Message = "Id é obrigatório.",
                         Success = false,
                         ErrorCode = ErrorCodes.MISSING_INFORMATION
                     };
@@ -34,7 +34,7 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
                 {
                     return new UpdateTaskCommandResponse
                     {
-                        Message = "Task not found.",
+                        Message = "Tarefa não encontrada.",
                         Success = false,
                         ErrorCode = ErrorCodes.TASK_NOT_FOUND
                     };
@@ -56,7 +56,7 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
 
                 var response = new UpdateTaskCommandResponse()
                 {
-                    Message = "Task updated successfully.",
+                    Message = "Tarefa atualizada com sucesso.",
                     Success = true,
                     Data = TaskDto.MapToDto(updatedTask)
                 };
@@ -76,7 +76,7 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
             {
                 return new UpdateTaskCommandResponse
                 {
-                    Message = $"An error occurred while updating the task: {ex.Message}",
+                    Message = $"Ocorreu um erro ao atualizar a tarefa: {ex.Message}",
                     Success = false,
                     ErrorCode = ErrorCodes.INTERNAL_SERVER_ERROR
                 };

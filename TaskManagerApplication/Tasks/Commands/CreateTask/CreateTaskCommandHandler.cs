@@ -29,7 +29,7 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                 {
                     return new CreateTaskCommandResponse
                     {
-                        Message = "Title is required.",
+                        Message = "Título é obrigatório.",
                         Success = false,
                         ErrorCode = ErrorCodes.MISSING_INFORMATION
                     };
@@ -41,7 +41,7 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                 {
                     return new CreateTaskCommandResponse
                     {
-                        Message = "User not found.",
+                        Message = "Título é obrigatório.",
                         Success = false,
                         ErrorCode = ErrorCodes.USER_NOT_FOUND
                     };
@@ -51,7 +51,7 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                 {
                     return new CreateTaskCommandResponse
                     {
-                        Message = "A task with this title already exists.",
+                        Message = "Já existe uma tarefa com este título para este usuário.",
                         Success = false,
                         ErrorCode = ErrorCodes.TASK_TITLE_ALREADY_EXISTS
                     };
@@ -69,7 +69,7 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
 
                 var response = new CreateTaskCommandResponse()
                 {
-                    Message = "Task created successfully.",
+                    Message = "Tarefa criada com sucesso.",
                     Success = true,
                     Data = TaskDto.MapToDto(created)
                 };
@@ -89,7 +89,7 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
             {
                 return new CreateTaskCommandResponse
                 {
-                    Message = $"An error occurred while creating the task: {ex.Message}",
+                    Message = $"Ocorreu um erro ao criar a tarefa: {ex.Message}",
                     Success = false,
                     ErrorCode = ErrorCodes.INTERNAL_SERVER_ERROR
                 };

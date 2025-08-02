@@ -18,7 +18,7 @@ namespace TaskManagerDomain.Dtos
         {
             if (user == null)
             {
-                throw new ArgumentNullException(nameof(user), "User cannot be null.");
+                throw new ArgumentNullException(nameof(user), "O usuário não pode ser nulo.");
             }
             return new UserDto()
             {

@@ -31,7 +31,7 @@ namespace TaskManagerApi.Controllers
                 return Created("", res);
             else
             {
-                _logger.LogError("An unexpected error occurred: {Message}", res.Message);
+                _logger.LogError("Ocorreu um erro inesperado: {Message}", res.Message);
                 return StatusCode(res.ErrorCodeHttp, res);
             }
         }
@@ -43,7 +43,7 @@ namespace TaskManagerApi.Controllers
                 return Created("", res);
             else
             {
-                _logger.LogError("An unexpected error occurred: {Message}", res.Message);
+                _logger.LogError("Ocorreu um erro inesperado: {Message}", res.Message);
                 return StatusCode(res.ErrorCodeHttp, res);
             }
         }
@@ -88,7 +88,7 @@ namespace TaskManagerApi.Controllers
                 return Ok(res);
             else
             {
-                _logger.LogError("An unexpected error occurred: {Message}", res.Message);
+                _logger.LogError("Ocorreu um erro inesperado: {Message}", res.Message);
                 return StatusCode(res.ErrorCodeHttp, res);
             }
         }
@@ -104,7 +104,7 @@ namespace TaskManagerApi.Controllers
                 return Ok(res.Message);
             else
             {
-                _logger.LogError("An unexpected error occurred: {Message}", res.Message);
+                _logger.LogError("Ocorreu um erro inesperado: {Message}", res.Message);
                 return StatusCode(res.ErrorCodeHttp, res);
             }
         }

@@ -27,7 +27,7 @@ namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
                 {
                     return new AssociateTaskToUserCommandResponse()
                     {
-                        Message = $"User with ID {request.UserId} not found.",
+                        Message = $"Usuário com ID {request.UserId} não encontrado.",
                         Success = false,
                         ErrorCode = ErrorCodes.USER_NOT_FOUND
                     };
@@ -37,7 +37,7 @@ namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
                 {
                     return new AssociateTaskToUserCommandResponse()
                     {
-                        Message = $"Task with ID {request.TaskId} not found.",
+                        Message = $"Tarefa com ID {request.TaskId} não encontrada.",
                         Success = false,
                         ErrorCode = ErrorCodes.TASK_NOT_FOUND
                     };
@@ -45,12 +45,12 @@ namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
                 task.Associate(user);
                 await _taskRepository.UpdateAsync(task);
 
-                await _notificationService.NotifyUserAsync(task.User.Id, $"New task assigned: {task.Title}");
+                await _notificationService.NotifyUserAsync(task.User.Id, $"Nova tarefa atribuída: {task.Title}");
 
                 var response = new AssociateTaskToUserCommandResponse()
                 {
                     Data = TaskDto.MapToDto(task),
-                    Message = "Task associated successfully.",
+                    Message = "Tarefa associada com sucesso.",
                     Success = true,
                 };
                 return response;
@@ -77,7 +77,7 @@ namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
             {
                 return new AssociateTaskToUserCommandResponse()
                 {
-                    Message = $"An unexpected error occurred: {ex.Message}",
+                    Message = $"Ocorreu um erro inesperado: {ex.Message}",
                     Success = false,
                     ErrorCode = ErrorCodes.INTERNAL_SERVER_ERROR
                 };

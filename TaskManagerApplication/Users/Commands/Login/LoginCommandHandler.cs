@@ -41,7 +41,7 @@ namespace TaskManagerApplication.Users.Commands.Login
                     {
                         Success = false,
                         ErrorCode = ErrorCodes.USER_NOT_FOUND,
-                        Message = $"User with Name {request.UserName} not found."
+                        Message = $"Usuário com Nome {request.UserName} não encontrado."
                     };
                 }
 
@@ -54,7 +54,7 @@ namespace TaskManagerApplication.Users.Commands.Login
                     {
                         Success = false,
                         ErrorCode = ErrorCodes.LOGIN_WITH_WRONG_PASSWORD,
-                        Message = $"Password is not valid for the user {user.UserName}."
+                        Message = $"A senha não é válida para o usuário {user.UserName}."
                     };
                 }
 

@@ -39,7 +39,7 @@ namespace TaskManagerApplication.Tasks.Queries.GetTaskById
                 {
                     Success = false,
                     ErrorCode = ErrorCodes.INTERNAL_SERVER_ERROR,
-                    Message = $"An error occurred while trying to retrieve Tasks: {ex.Message}"
+                    Message = $"Ocorreu um erro ao tentar recuperar tarefas: {ex.Message}"
                 };
             }
         }

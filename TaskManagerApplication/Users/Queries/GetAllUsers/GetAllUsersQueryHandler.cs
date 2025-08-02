@@ -32,7 +32,7 @@ namespace TaskManagerApplication.Users.Queries.GetAllUsers
                 {
                     Success = false,
                     ErrorCode = ErrorCodes.INTERNAL_SERVER_ERROR,
-                    Message = $"An error occurred while trying to retrieve users: {ex.Message}"
+                    Message = $"Ocorreu um erro ao tentar recuperar usuários: {ex.Message}"
                 };
             }
         }

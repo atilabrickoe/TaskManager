@@ -18,11 +18,11 @@ namespace TaskManagerDomain.Entities
         {
             if(string.IsNullOrWhiteSpace(UserName))
             {
-                throw new WrongRequiredInformation("UserName cannot be null or empty.");
+                throw new WrongRequiredInformation("Nome de usuário não pode ser nulo ou vazio.");
             }
             if (Guid.Empty == Id)
             {
-                throw new WrongRequiredInformation("Id cannot be empty.");
+                throw new WrongRequiredInformation("O ID não pode estar vazio.");
             }
         }
     }

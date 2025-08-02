@@ -25,18 +25,18 @@ namespace TaskManagerDomain.Entities
         {
             if (this.User == null)
             {
-                throw new UserIsRequiredForTaskException("User is required for task."); 
+                throw new UserIsRequiredForTaskException("O usuário é necessário para a tarefa."); 
             }
             if (this.User != null)
                 this.User.IsValid();
 
             if (string.IsNullOrWhiteSpace(Title))
             {
-                throw new WrongRequiredInformation("Title cannot be null or empty.");
+                throw new WrongRequiredInformation("O título não pode ser nulo ou vazio.");
             }
-            if(DueDate < DateTime.Now)
+            if(DueDate.Date < DateTime.Now.Date)
             {
-                throw new WrongRequiredInformation("Due date cannot be in the past.");
+                throw new WrongRequiredInformation("A data de vencimento não pode estar no passado.");
             }
         }
 
@@ -44,7 +44,7 @@ namespace TaskManagerDomain.Entities
         {
             if(this.User != null)
             {
-                throw new TaskAlreadyAssociatedException("This task is already associated with a user.");
+                throw new TaskAlreadyAssociatedException("Esta tarefa já está associada a um usuário.");
             }
         }
     }

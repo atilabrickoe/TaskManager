@@ -22,7 +22,7 @@ namespace TaskManagerApplication.Tasks.Commands.DeleteTask
                 {
                     return new DeleteTaskCommandResponse
                     {
-                        Message = "Task not found.",
+                        Message = "Tarefa não encontrada.",
                         Success = false,
                         ErrorCode = ErrorCodes.TASK_NOT_FOUND
                     };
@@ -32,7 +32,7 @@ namespace TaskManagerApplication.Tasks.Commands.DeleteTask
 
                 var response = new DeleteTaskCommandResponse()
                 {
-                    Message = "Task deleted successfully.",
+                    Message = "Tarefa excluída com sucesso.",
                     Success = true
                 };
 
@@ -42,7 +42,7 @@ namespace TaskManagerApplication.Tasks.Commands.DeleteTask
             {
                 return new DeleteTaskCommandResponse
                 {
-                    Message = $"An error occurred while creating the task: {ex.Message}",
+                    Message = $"Ocorreu um erro ao criar a tarefa: {ex.Message}",
                     Success = false,
                     ErrorCode = ErrorCodes.INTERNAL_SERVER_ERROR
                 };
