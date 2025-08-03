@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System.Threading.Tasks;
 using TaskManagerDomain.Dtos;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
@@ -9,11 +10,13 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
     {
         private readonly ITaskRepository _taskRepository;
         private readonly IUserRepository _userRepository;
+        private readonly INotificationService _notificationService;
 
-        public UpdateTaskCommandHandler(ITaskRepository taskRepository, IUserRepository userRepository)
+        public UpdateTaskCommandHandler(ITaskRepository taskRepository, IUserRepository userRepository, INotificationService notificationService)
         {
             _taskRepository = taskRepository;
             _userRepository = userRepository;
+            _notificationService = notificationService;
         }
 
         public async Task<UpdateTaskCommandResponse> Handle(UpdateTaskCommandRequest request, CancellationToken cancellationToken)
@@ -60,6 +63,9 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
                     Success = true,
                     Data = TaskDto.MapToDto(updatedTask)
                 };
+                await _notificationService.NotifyUserAsync(updatedTask.User.Id, $"Tarefa alterada, Responsavel:{updatedTask.User.UserName}, tarefa: " +
+                    $"{updatedTask.Title}, data de vencimento: " +
+                    $"{updatedTask.DueDate.ToString("dd/MM/yyyy")}");
 
                 return response;
             }

@@ -13,12 +13,14 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
         private readonly ITaskRepository _taskRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IUserRepository _userRepository;
+        private readonly INotificationService _notificationService;
 
-        public CreateTaskCommandHandler(ITaskRepository taskRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
+        public CreateTaskCommandHandler(ITaskRepository taskRepository, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, INotificationService notificationService)
         {
             _taskRepository = taskRepository;
             _httpContextAccessor = httpContextAccessor;
             _userRepository = userRepository;
+            _notificationService = notificationService;
         }
 
         public async Task<CreateTaskCommandResponse> Handle(CreateTaskCommandRequest request, CancellationToken cancellationToken)
@@ -73,6 +75,7 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                     Success = true,
                     Data = TaskDto.MapToDto(created)
                 };
+                await _notificationService.NotifyUserAsync(task.User.Id, $"Nova tarefa atribuída ao usuário {task.User.UserName}, tarefa: {task.Title}, data de vencimento: {task.DueDate.ToString("dd/MM/yyyy")}");
 
                 return response;
             }

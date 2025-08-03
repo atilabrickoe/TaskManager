@@ -16,6 +16,10 @@ using TaskManagerDomain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
 #region JWT Bearer
 // configure the application to authenticate users using JWT tokens,
 // verifying the issuer, audience, lifetime, and signing key
@@ -106,6 +110,8 @@ builder.Services.AddSwaggerGen();
 //{
 //    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 //});
+
+Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
 
 var app = builder.Build();
 
