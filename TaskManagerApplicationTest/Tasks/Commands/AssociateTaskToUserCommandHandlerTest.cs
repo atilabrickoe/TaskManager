@@ -6,6 +6,7 @@ using TaskManagerApplication.Tasks.Commands.AssociateTaskToUser;
 using TaskManagerDomain.Entities;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
+using TaskManagerMessaging.Messaging;
 
 namespace TaskManagerApplicationTest.Tasks.Commands
 {
@@ -45,7 +46,7 @@ namespace TaskManagerApplicationTest.Tasks.Commands
             result.Success.Should().BeTrue();
             result.Data.Title.Should().Be("Test Task");
             _taskRepositoryMock.Verify(r => r.UpdateAsync(task), Times.Once);
-            _notificationServiceMock.Verify(n => n.NotifyUserAsync(user.Id, It.IsAny<string>()), Times.Once);
+            _notificationServiceMock.Verify(n => n.NotifyUserAsync(It.IsAny<NotificationMessageDto>()), Times.Once);
         }
 
         [Test]

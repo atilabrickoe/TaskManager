@@ -1,18 +1,14 @@
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.DataManagers.Tasks;
 using Repository.DataManagers.Users;
-using Repository.Messaging;
-using System;
 using System.Text;
-using System.Text.Json.Serialization;
 using TaskManagerApplication.Users.Commands.CreateRandomUsers;
 using TaskManagerDomain.Interfaces;
+using TaskManagerMessaging.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 

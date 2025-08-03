@@ -2,6 +2,7 @@
 using TaskManagerDomain.Dtos;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
+using TaskManagerMessaging.Messaging;
 
 namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
 {
@@ -44,8 +45,13 @@ namespace TaskManagerApplication.Tasks.Commands.AssociateTaskToUser
                 }
                 task.Associate(user);
                 await _taskRepository.UpdateAsync(task);
-
-                await _notificationService.NotifyUserAsync(task.User.Id, $"Nova tarefa atribuída: {task.Title}");
+                var notification = new NotificationMessageDto()
+                {
+                    UserId = user.Id,
+                    TaskId = task.Id,
+                    Message = $"Nova tarefa atribuída: { task.Title}"
+                };
+                await _notificationService.NotifyUserAsync(notification);
 
                 var response = new AssociateTaskToUserCommandResponse()
                 {

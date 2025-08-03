@@ -5,6 +5,7 @@ using TaskManagerDomain.Dtos;
 using TaskManagerDomain.Entities;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
+using TaskManagerMessaging.Messaging;
 
 namespace TaskManagerApplication.Tasks.Commands.CreateTask
 {
@@ -75,7 +76,13 @@ namespace TaskManagerApplication.Tasks.Commands.CreateTask
                     Success = true,
                     Data = TaskDto.MapToDto(created)
                 };
-                await _notificationService.NotifyUserAsync(task.User.Id, $"Nova tarefa atribuída ao usuário {task.User.UserName}, tarefa: {task.Title}, data de vencimento: {task.DueDate.ToString("dd/MM/yyyy")}");
+                var notification = new NotificationMessageDto()
+                {
+                    UserId = user.Id,
+                    TaskId = task.Id,
+                    Message = $"Nova tarefa atribuída ao usuário {task.User.UserName}, tarefa: {task.Title}, data de vencimento: {task.DueDate.ToString("dd/MM/yyyy")}"
+                };
+                await _notificationService.NotifyUserAsync(notification);
 
                 return response;
             }

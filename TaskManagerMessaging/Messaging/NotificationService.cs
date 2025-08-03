@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
 using TaskManagerDomain.Interfaces;
 
-namespace Repository.Messaging
+namespace TaskManagerMessaging.Messaging
 {
     public class NotificationService : INotificationService
     {
@@ -25,7 +24,7 @@ namespace Repository.Messaging
             _factory = new ConnectionFactory { HostName = hostName };
         }
 
-        public async Task NotifyUserAsync(Guid userId, string message)
+        public async Task NotifyUserAsync(NotificationMessageDto notification)
         {
             try
             {
@@ -39,7 +38,7 @@ namespace Repository.Messaging
                     autoDelete: false,
                     arguments: null);
 
-                var payload = JsonSerializer.Serialize(new { userId, message });
+                var payload = JsonSerializer.Serialize(notification);
                 var body = Encoding.UTF8.GetBytes(payload);
 
                 await channel.BasicPublishAsync(

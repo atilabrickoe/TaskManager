@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using System.Threading.Tasks;
 using TaskManagerDomain.Dtos;
+using TaskManagerDomain.Entities;
 using TaskManagerDomain.Exceptions;
 using TaskManagerDomain.Interfaces;
+using TaskManagerMessaging.Messaging;
 
 namespace TaskManagerApplication.Tasks.Commands.UpdateTask
 {
@@ -63,9 +65,15 @@ namespace TaskManagerApplication.Tasks.Commands.UpdateTask
                     Success = true,
                     Data = TaskDto.MapToDto(updatedTask)
                 };
-                await _notificationService.NotifyUserAsync(updatedTask.User.Id, $"Tarefa alterada, Responsavel:{updatedTask.User.UserName}, tarefa: " +
+                var notification = new NotificationMessageDto()
+                {
+                    UserId = updatedTask.User.Id,
+                    TaskId = updatedTask.Id,
+                    Message = $"Tarefa alterada, Responsavel: {updatedTask.User.UserName}, tarefa: " +
                     $"{updatedTask.Title}, data de vencimento: " +
-                    $"{updatedTask.DueDate.ToString("dd/MM/yyyy")}");
+                    $"{updatedTask.DueDate.ToString("dd/MM/yyyy")}"
+                };
+                await _notificationService.NotifyUserAsync(notification);
 
                 return response;
             }

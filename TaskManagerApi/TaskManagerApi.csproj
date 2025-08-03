@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\TaskManagerApplication\TaskManagerApplication.csproj" />
+    <ProjectReference Include="..\TaskManagerMessaging\TaskManagerMessaging.csproj" />
   </ItemGroup>
 
 </Project>
