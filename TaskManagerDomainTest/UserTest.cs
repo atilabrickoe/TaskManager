@@ -26,7 +26,7 @@ namespace TaskManagerDomainTest
 
             act.Should()
                .Throw<WrongRequiredInformation>()
-               .WithMessage("UserName cannot be null or empty.");
+               .WithMessage("Nome de usuário não pode ser nulo ou vazio.");
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace TaskManagerDomainTest
 
             act.Should()
                .Throw<WrongRequiredInformation>()
-               .WithMessage("Id cannot be empty.");
+               .WithMessage("O ID não pode estar vazio.");
         }
 
         [Test]

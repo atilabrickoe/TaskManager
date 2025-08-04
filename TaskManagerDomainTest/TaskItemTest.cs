@@ -26,7 +26,7 @@ namespace TaskManagerDomainTest
 
             act.Should()
                 .Throw<WrongRequiredInformation>()
-                .WithMessage("Title cannot be null or empty.");
+                .WithMessage("O título não pode ser nulo ou vazio.");
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace TaskManagerDomainTest
 
             act.Should()
                 .Throw<WrongRequiredInformation>()
-                .WithMessage("Due date cannot be in the past.");
+                .WithMessage("A data de vencimento não pode estar no passado.");
         }
 
         [Test]
@@ -90,7 +90,7 @@ namespace TaskManagerDomainTest
             act.Should()
                .Throw<TargetInvocationException>() // reflection wraps the real exception
                .WithInnerException<TaskAlreadyAssociatedException>()
-               .WithMessage("This task is already associated with a user.");
+               .WithMessage("Esta tarefa já está associada a um usuário.");
         }
 
         [Test]

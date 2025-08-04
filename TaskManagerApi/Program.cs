@@ -166,4 +166,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+if (!app.Environment.IsEnvironment("Testing"))
+{
+    app.Run();
+}
+
+// Required for integration testing
+public partial class Program { }
