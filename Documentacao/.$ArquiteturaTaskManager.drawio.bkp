@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
   <diagram name="Página-1" id="PYXjfsEhip9eoO0YOPzp">
-    <mxGraphModel dx="2524" dy="2052" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2431" dy="2168" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -10,13 +10,13 @@
             <mxPoint x="410" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="S_2K4FOT3c_enkVnUJ_s-2" value="" style="group;fontSize=12;" vertex="1" connectable="0" parent="1">
+        <mxCell id="S_2K4FOT3c_enkVnUJ_s-2" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="267.5" y="412" width="285" height="80" as="geometry" />
         </mxCell>
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-3" value="Domain layer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="S_2K4FOT3c_enkVnUJ_s-2">
           <mxGeometry width="285" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="S_2K4FOT3c_enkVnUJ_s-5" value="" style="group;fontSize=12;" vertex="1" connectable="0" parent="1">
+        <mxCell id="S_2K4FOT3c_enkVnUJ_s-5" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="267.5" y="260" width="285" height="80" as="geometry" />
         </mxCell>
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-6" value="Application layer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="S_2K4FOT3c_enkVnUJ_s-5">
@@ -34,14 +34,14 @@
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-13" value="" style="sketch=0;html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api" vertex="1" parent="1">
           <mxGeometry x="319" y="-20" width="183" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="S_2K4FOT3c_enkVnUJ_s-18" value="" style="group;fontSize=12;" vertex="1" connectable="0" parent="1">
+        <mxCell id="S_2K4FOT3c_enkVnUJ_s-18" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="267.5" y="561" width="285" height="80" as="geometry" />
         </mxCell>
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-19" value="&lt;b style=&quot;color: rgb(237, 237, 237);&quot;&gt;Repositório&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="S_2K4FOT3c_enkVnUJ_s-18">
           <mxGeometry y="20" width="285" height="60" as="geometry" />
         </mxCell>
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-21" value="&lt;h1&gt;API&lt;/h1&gt;&lt;div&gt;* MediatR&lt;/div&gt;&lt;div&gt;* Logger&lt;/div&gt;&lt;div&gt;*&amp;nbsp;JWT Authorization&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Endpoints API&lt;/div&gt;&lt;div&gt;&lt;ul style=&quot;text-wrap-mode: nowrap; margin: 0px; padding-left: 20px;&quot;&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;User/Login&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;User/CreateRandom&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;User/GetUserById&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;User/CreateUser&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;User/GetAllUsers&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Task/CreateTask&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Task/UpdateTask&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Task/GetTaskById&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Task/DeleteTask&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="40" y="-45" width="227.5" height="260" as="geometry" />
+          <mxGeometry x="40" y="-80" width="227.5" height="260" as="geometry" />
         </mxCell>
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-23" value="&lt;h1&gt;Domain layer components&lt;/h1&gt;&lt;div&gt;* Entities&lt;/div&gt;&lt;div&gt;* Domain exceptions&lt;/div&gt;&lt;div&gt;* Enums&lt;/div&gt;&lt;div&gt;* Regra de Negócio&lt;br&gt;&lt;/div&gt;&lt;div&gt;* Migrations&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="40" y="563" width="180" height="180" as="geometry" />
@@ -70,7 +70,7 @@
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-34" value="&lt;h1&gt;Banco de dados&lt;/h1&gt;&lt;div&gt;* Sqlserver&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="40" y="723" width="180" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="S_2K4FOT3c_enkVnUJ_s-37" value="" style="group;fontSize=12;" vertex="1" connectable="0" parent="1">
+        <mxCell id="S_2K4FOT3c_enkVnUJ_s-37" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="630" y="280" width="285" height="80" as="geometry" />
         </mxCell>
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-38" value="Mensageria RabbitMQ" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="S_2K4FOT3c_enkVnUJ_s-37">
@@ -82,7 +82,7 @@
             <mxPoint x="510" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="S_2K4FOT3c_enkVnUJ_s-40" value="" style="group;fontSize=12;" vertex="1" connectable="0" parent="1">
+        <mxCell id="S_2K4FOT3c_enkVnUJ_s-40" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="630" y="412" width="285" height="80" as="geometry" />
         </mxCell>
         <mxCell id="S_2K4FOT3c_enkVnUJ_s-41" value="Tests" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="S_2K4FOT3c_enkVnUJ_s-40">
